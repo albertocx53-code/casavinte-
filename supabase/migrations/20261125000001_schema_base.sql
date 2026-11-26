@@ -25,7 +25,7 @@ create type tipo_lanc_fiado   as enum ('debito', 'pagamento', 'ajuste');
 -- Utilitário: atualiza updated_at
 -- -----------------------------------------------------------------------------
 create or replace function set_updated_at() returns trigger
-language plpgsql as $$
+language plpgsql set search_path = public, pg_temp as $$
 begin
   new.updated_at := now();
   return new;
@@ -127,6 +127,7 @@ create table produto_adicionais (
   adicional_id uuid not null references adicionais (id) on delete cascade,
   primary key (produto_id, adicional_id)
 );
+create index idx_produto_adicionais_adicional on produto_adicionais (adicional_id);
 
 -- -----------------------------------------------------------------------------
 -- Mesas e clientes
