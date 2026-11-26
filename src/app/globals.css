@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Paleta "Terracota & Mostarda" (referência Stitch). O token "brasa" é o terracota. */
+@theme {
+  --color-brasa-50: #fdf3ef;
+  --color-brasa-100: #f9e2d9;
+  --color-brasa-200: #f0c2b1;
+  --color-brasa-500: #b8452c;
+  --color-brasa-600: #a1361f;
+  --color-brasa-700: #862a17;
+  --color-brasa-800: #6b2213;
+  --color-mostarda-50: #fdf7e8;
+  --color-mostarda-100: #fbefd2;
+  --color-mostarda-400: #eab54a;
+  --color-mostarda-500: #d99a26;
+  --color-mostarda-700: #8a5d0a;
+  --color-creme: #fbf6f2;
+  --color-carvao-900: #1c1917;
+  --color-carvao-800: #292524;
+  --color-carvao-700: #3a3431;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+html, body { height: 100%; }
+body {
+  background: var(--color-creme);
+  color: #1c1917;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* números alinhados em valores */
+.tabular { font-variant-numeric: tabular-nums; }
+/* valores em destaque (KPIs) em fonte monoespaçada, como na referência */
+.valor { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: -0.02em; }
+
+/* barra de rolagem discreta */
+.scroll-fino { scrollbar-width: thin; scrollbar-color: #d6d3d1 transparent; }
+
+/* Impressão da conta em impressora térmica (58 mm) */
+@media print {
+  @page { size: 58mm auto; margin: 2mm; }
+  body * { visibility: hidden; }
+  .area-impressao, .area-impressao * { visibility: visible; }
+  .area-impressao { position: absolute; inset: 0 auto auto 0; width: 54mm; font-size: 11px; color: #000; }
+}
